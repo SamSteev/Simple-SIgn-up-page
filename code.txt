@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sign_Up</title>
+    <style>
+        .container {
+            width: 250px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 3px solid black;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="button" onclick="validateForm()">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+            } else if (!passwordPattern.test(password)) {
+                alert("Password must have\n" +
+                    "- At least 8 characters\n" +
+                    "- At least one uppercase letter\n" +
+                    "- At least one special character\n" +
+                    "- At least one number");
+            } else {
+                alert("Sign up successful!");
+                document.getElementById("signup-form").reset();
+            }
+        }
+    </script>
+</body>
+</html>
